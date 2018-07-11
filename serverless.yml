@@ -19,3 +19,8 @@ functions:
       - http:
           method: get
           path: hello
+    environment:
+      DB_HOST: localhost
+      DB_USER: motdbuser
+      DB_PASS: password
+      DB_NAME: mot2
