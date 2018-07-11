@@ -8,6 +8,9 @@ plugins:
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: dev
+  profile: slstest
+  region: eu-west-1
 
 functions:
   hello:
