@@ -14,7 +14,11 @@ export const hello: Handler = (event: APIGatewayEvent, context: Context, cb: Cal
 
     connection.query('SELECT * FROM random_names', (err: QueryError, rows: RowDataPacket[]) => {
 
-        const names = [ rows[0]['name'], rows[1]['name'], rows[2]['name'] ];
+        if (err) {
+            console.log(err.message);
+        }
+
+        const names = (!err) ? [ rows[0]['name'], rows[1]['name'], rows[2]['name'] ] : [];
 
         // const response = {
         //     statusCode: 200,
