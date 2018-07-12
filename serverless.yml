@@ -24,3 +24,11 @@ functions:
       DB_USER: motdbuser
       DB_PASS: password
       DB_NAME: mot2
+    vpc:
+      securityGroupIds:
+        - sg-62af4306
+      subnetIds:
+        - subnet-4b44cb12
+        - subnet-6fc0b518
+        - subnet-8d0d41e8
+    timeout: 300 # optional, in seconds, default is 6, api gateway times out after 30 anyway
