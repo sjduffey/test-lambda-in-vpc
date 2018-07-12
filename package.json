@@ -14,6 +14,7 @@
     "@types/aws-lambda": "0.0.22",
     "@types/mysql": "github:types/mysql",
     "@types/node": "^8.0.57",
+    "serverless-plugin-tracing": "^2.0.0",
     "serverless-webpack": "^4.0.0",
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.2",
