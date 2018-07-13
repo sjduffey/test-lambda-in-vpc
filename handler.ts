@@ -3,6 +3,8 @@ import { createConnection, QueryError, RowDataPacket } from 'mysql';
 
 export const hello: Handler = async (event: APIGatewayEvent, context: Context, cb: Callback) => {
 
+    //cb(null, { statusCode: 200, body: 'All good' });
+
     const db = {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
@@ -16,21 +18,29 @@ export const hello: Handler = async (event: APIGatewayEvent, context: Context, c
 
     console.log('SEND QUERY');
 
-    return await new Promise( ( resolve, reject ) => {
+    const response = await new Promise( ( resolve, reject ) => {
         connection.query( 'SELECT * FROM random_names', (err: QueryError, rows: RowDataPacket[]) => {
             if ( err ) {
                 console.log('ERROR: ' + err.message);
-                return reject( err );
+                connection.destroy();
+                reject( err );
+
+                return;
             }
 
             const names = rows.map((value) => { return value['name']; });
+            connection.destroy();
 
             console.log('THE NAMES: ' + JSON.stringify(names));
 
-            resolve( {
-                statusCode: 200,
-                body: JSON.stringify(names)
-            } );
+            resolve( names );
         } );
     } );
+
+    console.log('EXECUTE CALLBACK WITH ' + JSON.stringify(response));
+
+    cb(null, {
+        statusCode: 200,
+        body: JSON.stringify(response)
+    });
 };
