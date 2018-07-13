@@ -9,7 +9,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
-  profile: slstest
+  profile: xxxxxxxxxxxxxxxxxxxx
   region: eu-west-1
   tracing: true
   iamRoleStatements:
@@ -28,15 +28,15 @@ functions:
           method: get
           path: hello
     environment:
-      DB_HOST: localhost
-      DB_USER: motdbuser
-      DB_PASS: password
-      DB_NAME: mot2
+      DB_HOST: xxxxxxxxxxxxxxxxxxxx
+      DB_USER: xxxxxxxxxxxxxxxxxxxx
+      DB_PASS: xxxxxxxxxxxxxxxxxxxx
+      DB_NAME: xxxxxxxxxxxxxxxxxxxx
     vpc:
       securityGroupIds:
-        - sg-62af4306
+        - xxxxxxxxxxxxxxxxxxxx
       subnetIds:
-        - subnet-4b44cb12
-        - subnet-6fc0b518
-        - subnet-8d0d41e8
-    timeout: 300 # optional, in seconds, default is 6, api gateway times out after 30 anyway
+        - xxxxxxxxxxxxxxxxxxxx
+        - xxxxxxxxxxxxxxxxxxxx
+        - xxxxxxxxxxxxxxxxxxxx
+    timeout: 30 # optional, in seconds, default is 6, api gateway times out after 30 anyway
